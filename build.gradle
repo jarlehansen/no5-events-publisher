@@ -1,0 +1,10 @@
+defaultTasks 'no5-events-publisher-web:clean',
+        'no5-events-publisher-web:yarn',
+        'no5-events-publisher-web:yarn_run_build-test',
+        'no5-events-publisher-web:webjar',
+        'no5-events-publisher-api:clean',
+        'no5-events-publisher-api:build'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.4'
+}

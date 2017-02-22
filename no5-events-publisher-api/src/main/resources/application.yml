@@ -1,0 +1,13 @@
+info:
+ build:
+  name: 'no5-events-publisher'
+  description:
+  version: '@version@'
+
+springfox:
+ title: ${info.build.name}
+ description: ${info.build.description}
+ version: ${info.build.version}
+
+server:
+  port: ${PORT:8080}

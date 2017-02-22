@@ -1,0 +1,4 @@
+rootProject.name = 'no5-events-publisher'
+include 'no5-events-publisher-api'
+include 'no5-events-publisher-web'
+
