@@ -1,7 +1,8 @@
 package no.appspartner.events.device;
 
-import com.google.common.collect.Lists;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,12 +13,17 @@ import java.util.List;
 @RequestMapping(value = "/devices", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class DeviceController {
 
+    @Autowired
+    private DeviceService deviceService;
+
     @RequestMapping(method = RequestMethod.GET)
     public List<Device> getRegisteredDevices() {
-        Device device = new Device();
-        device.setRegistered(123L);
-        device.setToken("2123123");
-        return Lists.newArrayList(device);
+        return deviceService.getRegisteredDevices();
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public void storeDevice(@RequestBody Device device) {
+        deviceService.storeDevice(device);
     }
 
 }

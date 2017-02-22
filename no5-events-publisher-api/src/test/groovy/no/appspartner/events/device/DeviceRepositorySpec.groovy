@@ -22,5 +22,17 @@ class DeviceRepositorySpec extends Specification {
         devices.size() == 1
     }
 
+    def "Store and get devices"() {
+        given:
+        def device1 = new Device(token: "123", registered: System.currentTimeMillis())
+        def device2 = new Device(token: "1234", registered: System.currentTimeMillis())
 
+        when:
+        repository.save(device1)
+        repository.save(device2)
+        def devices = repository.findAllDevices()
+
+        then:
+        devices.size() == 3
+    }
 }
