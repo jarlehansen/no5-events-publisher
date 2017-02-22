@@ -1,0 +1,1 @@
+CREATE TABLE device (token VARCHAR PRIMARY KEY, registered NUMERIC);

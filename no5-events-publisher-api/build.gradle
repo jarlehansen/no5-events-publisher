@@ -19,11 +19,14 @@ repositories {
 dependencies {
     compile name: 'no5-events-publisher-web'
 
+    compile('com.notnoop.apns:apns:1.0.0.Beta6')
     compile('com.github.springfox.loader:springfox-loader:0.1.2')
     compile('org.projectlombok:lombok')
+    compile('com.h2database:h2:1.4.191')
 
     compile('org.springframework.boot:spring-boot-devtools')
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
 
     testCompile('cglib:cglib-nodep:3.2.4')
     testCompile('org.spockframework:spock-spring:1.0-groovy-2.4')

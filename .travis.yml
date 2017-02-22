@@ -9,9 +9,5 @@ install:
  - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
  - sudo apt-get install -y nodejs
  - npm install -g yarn
- - wget https://cli-assets.heroku.com/branches/stable/heroku-linux-amd64.tar.gz
- - tar -xf heroku-linux-amd64.tar.gz
- - ./heroku/bin/heroku plugins:install heroku-cli-deploy
 script:
  - ./gradlew
- - ./heroku/bin/heroku jar:deploy no5-events-publisher-api/build/libs/*.jar --app no5-events-publisher HEROKU_API_KEY

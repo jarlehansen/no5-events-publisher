@@ -1,0 +1,1 @@
+INSERT INTO device(token, registered) VALUES ('1234567890abcdefg', 1486410780554);
