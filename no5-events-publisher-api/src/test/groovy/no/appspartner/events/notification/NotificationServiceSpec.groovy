@@ -1,8 +1,9 @@
-package no.appspartner.events.event
+package no.appspartner.events.notification
 
 import com.notnoop.apns.ApnsService
 import no.appspartner.events.device.Device
 import no.appspartner.events.device.DeviceService
+import no.appspartner.events.event.Event
 import spock.lang.Specification
 
 class NotificationServiceSpec extends Specification {

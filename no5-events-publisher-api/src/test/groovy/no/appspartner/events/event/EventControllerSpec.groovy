@@ -1,5 +1,6 @@
 package no.appspartner.events.event
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
@@ -7,6 +8,7 @@ import spock.lang.Specification
 
 import static org.hamcrest.CoreMatchers.equalTo
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 
 class EventControllerSpec extends Specification {
@@ -32,5 +34,18 @@ class EventControllerSpec extends Specification {
                 .andExpect(jsonPath('$[0].title').value(equalTo("Title1")))
                 .andExpect(jsonPath('$[1].id').value(equalTo(2)))
                 .andExpect(jsonPath('$[1].title').value(equalTo("Title2")))
+    }
+
+    def "Add event"() {
+        given:
+        def event = new Event()
+        def eventJSON = new ObjectMapper().writeValueAsString(event)
+
+        when:
+        def response = mockMvc.perform(post("/events").content(eventJSON).contentType(MediaType.APPLICATION_JSON_UTF8))
+
+        then:
+        1 * eventService.publishEvent(_ as Event)
+        response.andExpect(status().isOk())
     }
 }

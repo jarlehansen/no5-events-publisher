@@ -1,10 +1,11 @@
-package no.appspartner.events.event;
+package no.appspartner.events.notification;
 
 import com.notnoop.apns.APNS;
 import com.notnoop.apns.ApnsService;
 import no.appspartner.events.Application;
 import no.appspartner.events.device.Device;
 import no.appspartner.events.device.DeviceService;
+import no.appspartner.events.event.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
@@ -35,7 +36,7 @@ public class NotificationService {
         List<Device> registeredDevices = deviceService.getRegisteredDevices();
         String payload = APNS.newPayload().alertBody(event.getTitle()).build();
         registeredDevices.forEach(device ->
-            apnsService.push(device.getToken(), payload)
+                apnsService.push(device.getToken(), payload)
         );
     }
 }
