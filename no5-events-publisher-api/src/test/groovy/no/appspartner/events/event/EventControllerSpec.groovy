@@ -7,8 +7,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import spock.lang.Specification
 
 import static org.hamcrest.CoreMatchers.equalTo
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 
 class EventControllerSpec extends Specification {
@@ -46,6 +45,15 @@ class EventControllerSpec extends Specification {
 
         then:
         1 * eventService.publishEvent(_ as Event)
+        response.andExpect(status().isOk())
+    }
+
+    def "Delete all events"() {
+        when:
+        def response = mockMvc.perform(delete('/events'))
+
+        then:
+        1 * eventService.deleteAll()
         response.andExpect(status().isOk())
     }
 }

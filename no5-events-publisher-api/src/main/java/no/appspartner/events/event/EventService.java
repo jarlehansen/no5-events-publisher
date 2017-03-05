@@ -29,4 +29,8 @@ public class EventService {
             notificationService.push(event);
         }
     }
+
+    public void deleteAll() {
+        eventRepository.deleteAll();
+    }
 }

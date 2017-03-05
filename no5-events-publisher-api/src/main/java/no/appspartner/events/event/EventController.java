@@ -25,4 +25,9 @@ public class EventController {
     public void addEvent(@RequestBody Event event) {
         eventService.publishEvent(event);
     }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    public void deleteAllEvents() {
+        eventService.deleteAll();
+    }
 }

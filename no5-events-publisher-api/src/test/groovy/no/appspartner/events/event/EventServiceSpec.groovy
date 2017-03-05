@@ -34,4 +34,12 @@ class EventServiceSpec extends Specification {
         1 * eventRepository.save(event) >> new Event(id: 1)
         1 * notificationService.push(_ as Event)
     }
+
+    def "Delete all events"() {
+        when:
+        eventService.deleteAll()
+
+        then:
+        1 * eventRepository.deleteAll()
+    }
 }

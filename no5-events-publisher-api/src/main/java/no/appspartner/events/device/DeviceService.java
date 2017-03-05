@@ -20,4 +20,8 @@ public class DeviceService {
     public List<Device> getRegisteredDevices() {
         return deviceRepository.findAllDevices();
     }
+
+    public void deleteAll() {
+        deviceRepository.deleteAll();
+    }
 }

@@ -32,4 +32,12 @@ class DeviceServiceSpec extends Specification {
         1 * deviceRepository.findAllDevices() >> [new Device()]
         devices.size() == 1
     }
+
+    def "Delete all devices"() {
+        when:
+        deviceService.deleteAll()
+
+        then:
+        1 * deviceRepository.deleteAll()
+    }
  }

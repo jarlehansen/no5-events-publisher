@@ -6,13 +6,9 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import spock.lang.Specification
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
-
 import static org.hamcrest.CoreMatchers.equalTo
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 
 class DeviceControllerSpec extends Specification {
     private DeviceController deviceController
@@ -46,6 +42,15 @@ class DeviceControllerSpec extends Specification {
 
         then:
         1 * deviceService.storeDevice(_ as Device)
+        response.andExpect(status().isOk())
+    }
+
+    def "Delete all devices"() {
+        when:
+        def response = mockMvc.perform(delete('/devices'))
+
+        then:
+        1 * deviceService.deleteAll()
         response.andExpect(status().isOk())
     }
 

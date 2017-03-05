@@ -26,4 +26,9 @@ public class DeviceController {
         deviceService.storeDevice(device);
     }
 
+    @RequestMapping(method = RequestMethod.DELETE)
+    public void deleteAllDevices() {
+        deviceService.deleteAll();
+    }
+
 }
