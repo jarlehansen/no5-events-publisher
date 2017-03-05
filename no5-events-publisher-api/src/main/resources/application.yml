@@ -1,0 +1,6 @@
+spring:
+ datasource:
+  url: jdbc:postgresql://ec2-176-34-111-152.eu-west-1.compute.amazonaws.com:5432/dbvsv5iuifprdd
+  driverClassName: org.postgresql.Driver
+  max-active: 5
+  min-idle: 1

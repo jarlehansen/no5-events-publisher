@@ -23,6 +23,7 @@ dependencies {
     compile('com.github.springfox.loader:springfox-loader:0.1.2')
     compile('org.projectlombok:lombok')
     compile('com.h2database:h2:1.4.191')
+    compile('org.postgresql:postgresql:9.4.1208.jre7')
 
     compile('org.springframework.boot:spring-boot-devtools')
     compile('org.springframework.boot:spring-boot-starter-web')
