@@ -1,14 +1,17 @@
 package no.appspartner.events.event
 
+import no.appspartner.events.notification.NotificationService
 import spock.lang.Specification
 
 class EventServiceSpec extends Specification {
     private EventService eventService
+    private NotificationService notificationService
     private EventRepository eventRepository
 
     void setup() {
         eventRepository = Mock(EventRepository)
-        eventService = new EventService(eventRepository: eventRepository)
+        notificationService = Mock(NotificationService)
+        eventService = new EventService(eventRepository: eventRepository, notificationService: notificationService)
     }
 
     def "Get all events"() {
@@ -20,7 +23,7 @@ class EventServiceSpec extends Specification {
         events.size() == 2
     }
 
-    def "Store event"() {
+    def "Store and publish event"() {
         given:
         def event = new Event()
 
@@ -29,5 +32,6 @@ class EventServiceSpec extends Specification {
 
         then:
         1 * eventRepository.save(event) >> new Event(id: 1)
+        1 * notificationService.push(_ as Event)
     }
 }

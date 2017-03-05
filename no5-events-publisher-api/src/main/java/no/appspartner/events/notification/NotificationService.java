@@ -23,7 +23,7 @@ public class NotificationService {
     @Autowired
     private DeviceService deviceService;
 
-    @Value("${certificate-password}")
+    @Value("${CERTIFICATE_PASSWORD:}")
     private String certificatePassword;
 
     @PostConstruct
