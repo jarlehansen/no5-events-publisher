@@ -1,6 +1,19 @@
 spring:
  datasource:
-  url: jdbc:postgresql://ec2-176-34-111-152.eu-west-1.compute.amazonaws.com:5432/dbvsv5iuifprdd
   driverClassName: org.postgresql.Driver
-  max-active: 5
+  max-active: 1
   min-idle: 1
+  initial-size: 1
+  removeAbandoned: true
+ jpa:
+  properties:
+   hibernate:
+    dialect: org.hibernate.dialect.PostgreSQLDialect
+    temp:
+     use_jdbc_metadata_defaults: false
+  database-platform: org.hibernate.dialect.PostgreSQLDialect
+  hibernate:
+   ddl-auto: none
+
+server:
+  port: ${PORT:8080}
