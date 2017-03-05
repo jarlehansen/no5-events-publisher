@@ -11,9 +11,8 @@ spring:
     dialect: org.hibernate.dialect.PostgreSQLDialect
     temp:
      use_jdbc_metadata_defaults: false
-  database-platform: org.hibernate.dialect.PostgreSQLDialect
   hibernate:
    ddl-auto: none
 
 server:
-  port: ${PORT:8080}
+ port: ${PORT:8080}

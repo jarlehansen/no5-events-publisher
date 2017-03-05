@@ -16,7 +16,7 @@ import java.io.InputStream;
 @SpringBootApplication
 public class Application {
 
-    @Value("${certificate-password:}")
+    @Value("${CERTIFICATE_PASSWORD:}")
     private String certificatePassword;
 
     public void init() {
